@@ -1,3 +1,6 @@
+// Downloaded from:
+// https://github.com/thejasonxie/bun-pkg
+
 import { $ } from "bun";
 import { parseArgs } from "util";
 
