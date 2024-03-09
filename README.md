@@ -57,6 +57,8 @@ In root of the monorepo, create a `bun-pkg.json` file to configure the package.j
 `bun-pkg.json` basically mirror the package.json you want to be created for new packages.
 `${PACKAGE}` will be replaced with the package name.
 
+Any 'scripts', 'dependencies', 'devDependencies', 'peerDependencies' lines will be appended to the new package.json.
+
 ```json
 {
   "name": "@organization/${PACKAGE}",
