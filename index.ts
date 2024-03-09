@@ -1,7 +1,5 @@
 #!/usr/bin/env bun
 
-import pkgJson from "./package.json";
-
 const main = async () => {
   try {
     const response = await fetch(
@@ -23,6 +21,8 @@ const main = async () => {
     console.log(
       `\n\x1b[32mAdding bun-pkg.ts to package.json's scripts as pkg...\x1b[0m`
     );
+
+    const pkgJson = await Bun.file("./package.json").json();
 
     const json = pkgJson as { scripts?: Record<string, string> };
     if (!json["scripts"]) {

@@ -1,11 +1,14 @@
 {
   "name": "bun-pkg",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Jason Xie",
   "description": "A monorepo manager for the bun workspaces",
   "module": "index.ts",
   "type": "module",
-  "repositiory": "https://github.com/thejasonxie/bun-pkg",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thejasonxie/bun-pkg"
+  },
   "keywords": [
     "bun",
     "monorepo"
