@@ -37,7 +37,7 @@ if (packages[packages.length - 1].length === 0) packages.pop();
 
 const listPackages = () => {
   console.log("\n\x1b[1mPackages:\x1b[0m");
-  console.log(packages.join("\n"));
+  console.log(packages.length > 0 ? packages.join("\n") : "No packages found");
 };
 
 const help = (exitCode: number) => {
