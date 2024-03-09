@@ -1,6 +1,6 @@
 {
   "name": "bun-pkg",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Jason Xie",
   "description": "A monorepo manager for the bun workspaces",
   "module": "index.ts",
@@ -11,7 +11,10 @@
   },
   "keywords": [
     "bun",
-    "monorepo"
+    "monorepo",
+    "workspaces",
+    "package-manager",
+    "javascript"
   ],
   "devDependencies": {
     "@types/bun": "latest"
@@ -21,5 +24,8 @@
   },
   "bin": {
     "bun-pkg": "./index.ts"
+  },
+  "scripts": {
+    "pkg": "bun scripts/bun-pkg.ts"
   }
 }
