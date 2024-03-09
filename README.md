@@ -1,7 +1,6 @@
 # bun-pkg
 
 [![npm version](https://badge.fury.io/js/bun-pkg.svg)](https://badge.fury.io/js/bun-pkg)
-[![npm](https://img.shields.io/npm/dt/bun-pkg.svg)](https://www.npmjs.com/package/bun-pkg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/brunobasto/bun-pkg/master/LICENSE)
 
 A monorepo manager for the [bun](https://bun.sh/) [workspaces](https://bun.sh/docs/install/workspaces).
