@@ -4,9 +4,13 @@
 [![npm](https://img.shields.io/npm/dt/bun-pkg.svg)](https://www.npmjs.com/package/bun-pkg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/brunobasto/bun-pkg/master/LICENSE)
 
-A monorepo manager for the bun workspaces.
+A monorepo manager for the [bun](https://bun.sh/) [workspaces](https://bun.sh/docs/install/workspaces).
 
-This is an attempt to replicate pnpm recursive command in bun workspaces. If there are any issues with the package, feel free to open an issue or a pull request. Or just modify the bun-pkg.ts file in the scripts folder within your own project to your liking.
+This is an attempt to replicate pnpm's [recursive](https://pnpm.io/cli/recursive) command in bun workspaces. If there are any issues with the package, feel free to open an issue or fork & pull request. Or just modify the bun-pkg.ts file in the scripts folder within your own project to your liking.
+
+The script uses Bun's [Shell](https://bun.sh/docs/runtime/shell) which is still under development.
+
+There's some [hardcoding](https://github.com/thejasonxie/bun-pkg/blob/main/scripts/bun-pkg.ts#L107) done in the script for `bun run build` and `bun create vite`. I've opened an [issue](https://github.com/oven-sh/bun/issues/9324) in the bun repo to see if this is a bug or if there's a better way to do this.
 
 ## Usage
 
