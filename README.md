@@ -61,18 +61,14 @@ Any 'scripts', 'dependencies', 'devDependencies', 'peerDependencies' lines will 
 ```json
 {
   "name": "@organization/${PACKAGE}",
-  "version": "0.0.0",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "version": "0.0.1",
+  "private": false,
+  "publishConfig": {
+    "@organization:registry": "https://npm.pkg.github.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/organization/${PACKAGE}"
-  },
-  "scripts": {
-    "build": "bun build",
-    "test": "bun test"
   }
 }
 ```
