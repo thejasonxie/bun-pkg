@@ -1,6 +1,7 @@
 # bun-pkg
 
 [![npm version](https://badge.fury.io/js/bun-pkg.svg)](https://badge.fury.io/js/bun-pkg)
+[![npm](https://img.shields.io/npm/dt/bun-pkg.svg)](https://www.npmjs.com/package/bun-pkg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/brunobasto/bun-pkg/master/LICENSE)
 
 A monorepo manager for the [bun](https://bun.sh/) [workspaces](https://bun.sh/docs/install/workspaces).
@@ -9,7 +10,7 @@ This is an attempt to replicate pnpm's [recursive](https://pnpm.io/cli/recursive
 
 The script uses Bun's [Shell](https://bun.sh/docs/runtime/shell) which is still under development.
 
-There's some [hardcoding](https://github.com/thejasonxie/bun-pkg/blob/main/scripts/bun-pkg.ts#L107) done in the script for `bun run build` and `bun create vite`. I've opened an [issue](https://github.com/oven-sh/bun/issues/9324) in the bun repo to see if this is a bug or if there's a better way to do this.
+There's some [hardcoding](https://github.com/thejasonxie/bun-pkg/blob/main/scripts/bun-pkg.ts#L107) done in the script for `bun run build` and `bun create vite`. I've opened an [issue](https://github.com/oven-sh/bun/issues/9324) in the bun repo to see if this is a bug or if there's a better way to do this. As of now, if you are experiencing issues running commands with `run`, add it to the [hardcoded](https://github.com/thejasonxie/bun-pkg/blob/main/scripts/bun-pkg.ts#L107) section in your downloaded `bun-pkg.ts`.
 
 ## Usage
 
@@ -21,7 +22,10 @@ bun pkg package-a build # build package-a using bun build
 bun pkg package-a run build # run build script in package-a
 bun pkg -n package-a init # init package-a using bun init
 bun pkg -n package-a create vite # create vite app in package-a
-bun pkg -n package-a init --use-config # modify package-a's package.json using bun-pkg.json, see configuration section
+
+# create a new package with a custom package.json using bun-pkg.json,
+# see configuration section:
+bun pkg -n package-a init --use-config
 
 ```
 
@@ -31,6 +35,7 @@ bun pkg -n package-a init --use-config # modify package-a's package.json using b
 
 ```bash
 bunx bun-pkg
+echo {} > bun-pkg.json # See configuration section below for more details
 ```
 
 ### Manually
@@ -48,6 +53,12 @@ Add the following to your `package.json`'s scripts:
  "scripts": {
    "pkg": "bun scripts/bun-pkg.ts"
   }
+```
+
+Then if you want to set the package.json of new packages, create a `bun-pkg.json` and add a template package.json to it. See configuration section below.
+
+```bash
+echo {} > bun-pkg.json # See configuration section below for more details
 ```
 
 ## Configuration
