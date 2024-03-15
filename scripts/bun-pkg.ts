@@ -105,15 +105,7 @@ const checkPkgExists = (pkg: string, exists: boolean) => {
 const execPkgCommand = async (pkg: string, command: string) => {
   console.log(`\x1b[32mRunning "bun ${command}" in package "${pkg}"...\x1b[0m`);
 
-  // might be a bug in bun.sh
-  // https://github.com/oven-sh/bun/issues/9324
-  if (command === "run build") {
-    await $`cd packages/${pkg} && bun run build`;
-  } else if (command === "create vite") {
-    await $`cd packages/${pkg} && bun create vite .`;
-  } else {
-    await $`cd packages/${pkg} && bun ${command}`;
-  }
+  await $`cd packages/${pkg} && bun ${{ raw: command }}`;
 };
 
 const execAllPkgCommand = async (command: string) => {
