@@ -88,9 +88,11 @@ const endTimer = (msg?: string) => {
 
 const checkPkgExists = (pkg: string, exists: boolean) => {
   if (!packages.includes(pkg) && exists) {
+    console.log(`Package directory "${pkg}" does not exist.`);
     console.log(
-      `Package directory "${pkg}" does not exist. Try the following packages:`
+      `If you want to create a new package, use "bun pkg -n <package-name> <command>"`
     );
+    console.log(`Otherwise, these are the available packages:`);
     listPackages();
     process.exit(1);
   }

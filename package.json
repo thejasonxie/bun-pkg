@@ -1,6 +1,6 @@
 {
   "name": "bun-pkg",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "author": "Jason Xie",
   "description": "A monorepo manager for the bun workspaces",
   "module": "index.ts",
