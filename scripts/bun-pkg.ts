@@ -6,6 +6,42 @@ import { parseArgs } from "util";
 
 const startTime = performance.now();
 
+const BUN_COMMANDS = [
+  "build",
+  "install",
+  "add",
+  "run",
+  "update",
+  "link",
+  "unlink",
+  "remove",
+  "create",
+  "upgrade",
+  "discord",
+  "test",
+  "pm",
+  "x",
+  "repl",
+];
+
+// https://github.com/oven-sh/bun/blob/main/src/cli.zig#L1328
+const BUN_RESERVED_COMMANDS = [
+  "deploy",
+  "cloud",
+  "info",
+  "config",
+  "use",
+  "auth",
+  "login",
+  "logout",
+  "whoami",
+  "publish",
+  "prune",
+  "outdated",
+  "list",
+  "why",
+];
+
 const { values, positionals } = parseArgs({
   args: Bun.argv,
   options: {
@@ -107,7 +143,14 @@ const checkPkgExists = (pkg: string, exists: boolean) => {
 const execPkgCommand = async (pkg: string, command: string) => {
   console.log(`\x1b[32mRunning "bun ${command}" in package "${pkg}"...\x1b[0m`);
 
-  await $`cd packages/${pkg} && bun ${{ raw: command }}`;
+  if (
+    BUN_COMMANDS.includes(command.split(" ")[0]) ||
+    BUN_RESERVED_COMMANDS.includes(command.split(" ")[0])
+  ) {
+    await $`cd packages/${pkg} && bun ${{ raw: command }}`;
+  } else {
+    await $`cd packages/${pkg} && ${{ raw: command }}`;
+  }
 };
 
 const execAllPkgCommand = async (command: string) => {
