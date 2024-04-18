@@ -1,4 +1,4 @@
-// Downloaded from:
+// Downloaded with 'bunx bun-pkg' from:
 // https://github.com/thejasonxie/bun-pkg
 
 import { $ } from "bun";
@@ -67,7 +67,7 @@ const { values, positionals } = parseArgs({
       type: "boolean",
     },
   },
-  strict: true,
+  strict: false,
   allowPositionals: true,
 });
 
@@ -141,14 +141,18 @@ const checkPkgExists = (pkg: string, exists: boolean) => {
 };
 
 const execPkgCommand = async (pkg: string, command: string) => {
-  console.log(`\x1b[32mRunning "bun ${command}" in package "${pkg}"...\x1b[0m`);
-
   if (
     BUN_COMMANDS.includes(command.split(" ")[0]) ||
     BUN_RESERVED_COMMANDS.includes(command.split(" ")[0])
   ) {
+    console.log(
+      `\x1b[32mRunning "bun ${command}" in package "${pkg}"...\x1b[0m`
+    );
     await $`cd packages/${pkg} && bun ${{ raw: command }}`;
   } else {
+    console.log(`\x1b[32mRunning "${command}" in package "${pkg}"...\x1b[0m`);
+    const idx = Bun.argv.findIndex((arg) => arg === command.split(" ")[0]);
+    command = Bun.argv.slice(idx).join(" ");
     await $`cd packages/${pkg} && ${{ raw: command }}`;
   }
 };
