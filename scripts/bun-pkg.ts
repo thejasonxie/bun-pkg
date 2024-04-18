@@ -22,6 +22,7 @@ const BUN_COMMANDS = [
   "pm",
   "x",
   "repl",
+  "init",
 ];
 
 // https://github.com/oven-sh/bun/blob/main/src/cli.zig#L1328
